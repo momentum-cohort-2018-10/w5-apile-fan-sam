@@ -20,10 +20,12 @@ For this week's project, you will build as a group a Django application that use
 - The main page of the application shows a paginated list of posts. This list of posts is ordered by the number of votes (most votes at the top, descending) and the datetime the post is added (again, descending). The user should be able to choose to sort by number of votes first (with datetime as a secondary sort for ties) or by datetime first.
   - Note the word _paginated_. These links should be paginated, with each page showing 20 links. Consider using a third-party library for pagination or roll your own with GET parameters.
 - Clicking on thumbs-up (or some other icon you choose) on a post should add a positive vote to that post. The user should come back to the same page they are currently on after clicking. A user can only vote once on a post.
+  - What's the best way to make this work without JavaScript? Each link can have an id, and the user can be redirected back to the page they're on with an anchor for that id after upvoting.
 - Clicking on a post's title should take the user to the post's link, if it has one. If not, it takes the user to the post's detail page.
 - Each post displayed should also show the number of comments it currently has. Clicking that number of comments should take the user to the post's detail page.
 - On the post's detail page, the post title and description should be shown, along with all the post's comments, ordered by datetime created ascending (first comment to most recent). Each comment should show the user who created it.
 - Posts can be viewed by anyone, but only a signed-in user can comment or vote.
+- The [Django messages framework](https://docs.djangoproject.com/en/2.1/ref/contrib/messages/) should be used for informing the user
 
 When a user is signed in:
 
@@ -37,6 +39,7 @@ Optional ideas for enhancing this application:
 
 - Add a profile page for a user that displayed all the posts a user has created and all comments they have made.
 - Allow users to edit their comments.
+- Add search functionality.
 
 ### Development and deployment
 
@@ -53,3 +56,4 @@ The above are requirements necessary for this assignment to be complete. This is
 - [Faker](https://faker.readthedocs.io/en/master/) and [Mimesis](https://mimesis.readthedocs.io/)
 - [dj-pagination](https://dj-pagination.readthedocs.io/en/latest/)
 - [Django-Gravatar](https://github.com/twaddington/django-gravatar/) -- add user avatars!
+- [django-find](https://github.com/knipknap/django-find) -- add search
