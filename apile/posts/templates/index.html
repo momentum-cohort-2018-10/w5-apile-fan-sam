@@ -1,5 +1,18 @@
-<h1>Hello World</h1>
+{% extends 'base.html' %}
+{% block content %}
+
 {% for post in posts %}
-<p>{{ post.title }}</p>
-<p>{{ post.description }}</p>
+    <div class="container">
+        <p>{{ post.title }}</p>
+        <p>{{ post.description }}</p>
+        <p>{{ post.author }} </p>
+        <p>{{ post.url }} </p>
+        <p>{{ post.vote_set.count }}</p>
+        <div class="controls">
+            <p>5 Comments</p>
+        </div>
+    </div>
+
 {% endfor %}
+
+{% endblock content %}
