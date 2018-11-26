@@ -1,6 +1,6 @@
 from django.contrib import admin
-from posts.models import Post, User
-from django.contrib.auth.admin import UserAdmin
+from posts.models import Post
+from django.contrib.auth.models import User
 
 
 class PostAdmin(admin.ModelAdmin):
@@ -10,4 +10,5 @@ class PostAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Post, PostAdmin)
-admin.site.register(User, UserAdmin)
+admin.site.unregister(User)
+admin.site.register(User)
