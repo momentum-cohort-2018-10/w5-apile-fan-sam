@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block title %}
+    Registration-Form {{ block.super }}
+{% endblock title %}
+{% block content %}
+        <h1> Registration Form </h1>
+        <form role="form" action='' method="post">
+            {% csrf_token %}
+            {% for field in form %}
+            <div class="field">
+                <label class="label">{{ field.label_tag }}</label>
+                <div class="control">
+                    <p>{{ field }}</p>
+                </div>
+            </div>
+
+            {% endfor %}
+            <button type="submit" class="button is-primary">Submit</button>
+        </form>
+    
+{% endblock content %}

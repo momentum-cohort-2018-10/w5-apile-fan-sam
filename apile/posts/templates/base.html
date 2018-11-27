@@ -25,20 +25,22 @@
                 <h2 class="sub-title">The internets best website</h2>
                     <div class="navbar-menu">
                         <div class="navbar-end">
-                            <a class="navbar-item is-active">HOME
+                            <a href="{% url 'home' %}" class="navbar-item is-active">HOME
                                 &nbsp;<i class="fas fa-home"></i>
                             </a>
                             <a class="navbar-item ">SEARCH</a>
                             <a class="navbar-item ">FAVORITE</a>
                             <div class="navbar-item">
-                                <a class="button is-black is-inverted">
                                 {% if user.is_authenticated %}
-                                <div>register</div>
-                                {% else %}
-                                <div>login</div>
+                                    <a class="button is-black is-inverted" href="{% url 'auth_logout' %}">logout</a>
+                                    {% else %}
+                                    <a class="button is-black is-inverted" href="{% url 'auth_login' %}">login</a>
+                                    
+                                    <a class="button is-black is-inverted" href="{% url 'registration_register' %}">Register</a>
+                                   
                                 {% endif %}
                                 
-                                </a>
+                                
                             </div>
                         </div>
         </nav>

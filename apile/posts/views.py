@@ -7,4 +7,10 @@ def index(request):
     return render(request, 'index.html', {
         'posts': posts
     })
-    
+
+
+def get_post(request, slug):
+    posts = Post.objects.all()
+    return render(request, 'posts/post.html', {
+        'posts': posts
+    })
