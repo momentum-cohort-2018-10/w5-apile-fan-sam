@@ -2,6 +2,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -14,10 +15,39 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
+
+
 <body>
-    <h1 class="title">Apile</h1>
+
+    <header class="hero has-background-info is bold is medium">
+        <nav class="navbar">
+            <h1 class="title is-1 has-text-light">Apile</h1>
+                <h2 class="sub-title">The internets best website</h2>
+                    <div class="navbar-menu">
+                        <div class="navbar-end">
+                            <a class="navbar-item is-active">HOME
+                                <i class="fas fa-home"></i>
+                            </a>
+                            <a class="navbar-item ">SEARCH</a>
+                            <a class="navbar-item ">FAVORITE</a>
+                            <div class="navbar-item">
+                                <a class="button is-black is-inverted">
+                                <div>login</div>
+                                </a>
+                            </div>
+                        </div>
+        </nav>
+    </header>
+
     {% block content %}
     {% endblock content %}
-    
+
 </body>
+
+<footer class="footer has-background-grey-dark">
+    <div class="content has-text-centered has-text-white-ter">
+        <p> - 2018 Fan Sam all rights reserved - </p>
+    </div>
+</footer>
+
 </html>
