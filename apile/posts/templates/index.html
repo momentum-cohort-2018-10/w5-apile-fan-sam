@@ -3,13 +3,25 @@
 
 {% for post in posts %}
     <div class="container">
-        <p>{{ post.title }}</p>
-        <p>{{ post.description }}</p>
-        <p>{{ post.author }} </p>
-        <p>{{ post.url }} </p>
-        <p>{{ post.vote_set.count }}</p>
-        <div class="controls">
-            <p>5 Comments</p>
+        <div class="box">
+                <p class="subtitle has-text-weight-bold">{{ post.title }}</p>
+                <p>{{ post.description }}</p>
+                <p class="subtitle">Author:{{ post.author }} </p>
+                <p>{{ post.url }} </p>
+                <p class="has-text-weight-bold">Votes:{{ post.vote_set.count }}</p>
+                <div class="controls">
+                    <p>5 Comments</p>
+                        <footer class="card-footer">
+                                    <div>
+                                        <a class="button is-outlined is-primary">more info</a>
+                                        <a class="button is-outlined is-link">Like
+                                            <i class="far fa-thumbs-up"></i></a>
+                                        <a class="button is-outlined is-danger">Thumbs down
+                                            <i class="far fa-thumbs-down"></i></a>       
+                                    </div>
+                        </footer>
+                </div>
+            </div>    
         </div>
     </div>
 
