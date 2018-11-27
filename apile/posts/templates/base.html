@@ -26,13 +26,18 @@
                     <div class="navbar-menu">
                         <div class="navbar-end">
                             <a class="navbar-item is-active">HOME
-                                <i class="fas fa-home"></i>
+                                &nbsp;<i class="fas fa-home"></i>
                             </a>
                             <a class="navbar-item ">SEARCH</a>
                             <a class="navbar-item ">FAVORITE</a>
                             <div class="navbar-item">
                                 <a class="button is-black is-inverted">
+                                {% if user.is_authenticated %}
+                                <div>register</div>
+                                {% else %}
                                 <div>login</div>
+                                {% endif %}
+                                
                                 </a>
                             </div>
                         </div>

@@ -15,6 +15,4 @@ class VoteAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Post, PostAdmin)
-admin.site.unregister(User)
-admin.site.register(User)
 admin.site.register(Vote, VoteAdmin)
