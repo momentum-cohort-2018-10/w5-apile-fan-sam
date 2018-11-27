@@ -1,0 +1,42 @@
+[
+    {
+        "title": "Backdoor in popular event-stream NPM repo",
+        "link": "https://github.com/dominictarr/event-stream/issues/116",
+        "description": ""
+    },
+    {
+        "title": "Why are tech companies making custom typefaces?",
+        "link": "https://www.arun.is/blog/custom-typefaces/",
+        "description": ""
+    },
+    {
+        "title": "Object-capability model",
+        "link": "https://en.wikipedia.org/wiki/Object-capability_model",
+        "description": ""
+    },
+    {
+        "title": "The US could regulate AI in the name of national security ",
+        "link": "https://qz.com/1469008/the-us-could-regulate-ai-in-the-name-of-national-security/",
+        "description": "Artificial intelligence technology has the capability to be the most impactful software advance in history and the US government has no idea how to properly regulate it."
+    },
+    {
+        "title": " The Principle Of Least Astonishment and JavaScript’s .sort()",
+        "link": "https://medium.com/@winwardo/the-principle-of-least-astonishment-and-javascripts-sort-e98a734a30c9",
+        "description": "This post is not designed to point at JavaScript and laugh, or say it’s a bad language. It’s old and has evolved over time, while keeping backwards compatibility along the way — sadly this means that newer developers may run into problems there were created years ago. Instead, I want to encourage you to consider how others will read and use your own code. This post highlights how a few decisions that are confusing can combine very rapidly to make almost impenetrable code, despite it appearing so simple."
+    },
+    {
+        "title": "Generative art setup",
+        "link": "https://www.creativeapplications.net/tutorials/introduction-to-clojure-part-1/",
+        "description": "After seeing https://www.creativeapplications.net/tutorials/introduction-to-clojure-part-1/ on this site and discovering Quil (http://www.quil.info/) I wanted to ask you guys if you have any experience to share with your usage of Clojure for generative art. I’m especially interested in your setup. Is there a way to quickly iterate on a sketch/program by letting Clojure reevaluate it?"
+    },
+    {
+        "title": "What are you working on this week? ",
+        "link": "",
+        "description": "This is the weekly thread to discuss what you have done recently and are working on this week. Please be descriptive and don’t hesitate to champion your accomplishments or ask for help, advice or other guidance."
+    },
+    {
+        "title": "The Simplest SQLite Common Table Expression Tutorial",
+        "link": "https://blog.expensify.com/2015/09/25/the-simplest-sqlite-common-table-expression-tutorial/",
+        "description": ""
+    }
+]
