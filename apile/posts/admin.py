@@ -11,7 +11,7 @@ class PostAdmin(admin.ModelAdmin):
 
 class VoteAdmin(admin.ModelAdmin):
     model = Vote
-    list_display = ('voter', 'post')
+    list_display = ('vote', 'voter', 'post')
 
 
 admin.site.register(Post, PostAdmin)
