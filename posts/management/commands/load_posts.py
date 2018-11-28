@@ -13,7 +13,12 @@ class Command(BaseCommand):
         pass
 
     def handle(self, *args, **options):
-        User.objects.all().delete()
+
+        users = User.objects.all()
+        for user in users:
+            if not user.is_staff:
+                user.delete()
+
         Post.objects.all().delete()
         person = Person('en')
         text = Text('en')
