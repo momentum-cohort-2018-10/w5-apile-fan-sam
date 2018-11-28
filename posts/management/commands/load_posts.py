@@ -1,4 +1,5 @@
 from django.core.management.base import BaseCommand
+
 from posts.models import Post, User, Vote
 from django.template.defaultfilters import slugify
 from mimesis import Person
@@ -13,6 +14,7 @@ class Command(BaseCommand):
         pass
 
     def handle(self, *args, **options):
+
 
         users = User.objects.all()
         for user in users:
@@ -45,3 +47,5 @@ class Command(BaseCommand):
 
         for x in range(20):
             Vote.objects.create(vote=True, voter=choice(users), post=posts[x])
+            
+                
