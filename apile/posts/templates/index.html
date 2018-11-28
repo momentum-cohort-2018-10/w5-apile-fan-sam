@@ -10,14 +10,13 @@
             <i class="fas fa-caret-down"></i>
             </div>
             <div class="post-content">
-                <h2 class="post-title has-text-weight-bold is-size-5">{{ post.title }}</h2>
+                <span><h2 class="post-title has-text-weight-bold is-size-5">{{ post.title }}</h2> <a href="{% url 'get_post' slug=post.slug %}" class="button is-info is-outlined is-small">Link to Article</a></span>
                 <p class="author has-text-grey">{{ post.author }}</p>
                 <p class="post-description">{{ post.description }}</p>
                 <p>{{ post.url }} </p>
                 <div class="controls">
                     <p class="post-info">
                         <span class="has-text-grey">5 Comments</span>
-                        <a href="{% url 'get_post' slug=post.slug %}" class="button is-info is-outlined is-small">Link to Article</a>
                     </p>
                         
                 </div>

@@ -1,13 +1,9 @@
 from django.core.management.base import BaseCommand
-from django.conf import settings
-import os.path
-import json
-from posts.models import Post, User
+from posts.models import Post, User, Vote
 from django.template.defaultfilters import slugify
-
-
-def get_path(file):
-    return os.path.join(settings.BASE_DIR, 'post_data', file)
+from mimesis import Person
+from mimesis import Text
+from random import randint, choice
 
 
 class Command(BaseCommand):
@@ -17,26 +13,30 @@ class Command(BaseCommand):
         pass
 
     def handle(self, *args, **options):
+        User.objects.all().delete()
         Post.objects.all().delete()
-        user = User.objects.get(username="fan")
+        person = Person('en')
+        text = Text('en')
+        users = []
+        for i in range(5):
+            user = User.objects.create_user(username=person.username(),
+                                            password="greenfox23")
+            users.append(user)
 
-        with open(get_path('posts.json'), 'r') as file:
-            reader = json.load(file)
+        posts = []
+        for _ in range(20):
 
-            i = 0
+            post = Post(
+                title=text.title(),
+                description=text.text(8),
+                link="https://github.com/momentum-cohort-2018-10/w5-apile-fan-sam",
+                author=choice(users)
+            )
 
-            for post in reader:
+            post.slug = slugify(post.title) + f'-{randint(1, 255)}'
 
-                post = Post(
-                    title=reader[i]['title'],
-                    slug=slugify(reader[i]['title']),
-                    author=user
-                )
-                if reader[i]['link']:
-                    post.link = reader[i]['link']
+            post.save()
+            posts.append(post)
 
-                if reader[i]['description']:
-                    post.description = reader[i]['description']
-
-                post.save()
-                i += 1
+        for x in range(20):
+            Vote.objects.create(vote=True, voter=choice(users), post=posts[x])
