@@ -5,7 +5,31 @@ body {
     text-align: center;
 }
 .container {
-    background-color: white;
     padding: 20px 30px;
     margin: 30px auto;
+}
+.container .post-box {
+    display: flex;
+}
+.voting {
+    text-align: center;
+    padding: 0 20px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+.voting p {
+    font-size: 2rem;
+}
+.voting i {
+    font-size: 3rem;
+}
+.post-content .post-title {
+    line-height: 1;
+}
+.post-content .author{
+    margin-bottom: .75rem;
+}
+.post-content .post-description {
+    margin-bottom: 1.75rem;
 }
