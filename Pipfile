@@ -7,6 +7,9 @@ name = "pypi"
 django = "*"
 django-extensions = "*"
 django-registration-redux = "*"
+"psycopg2" = "*"
+gunicorn = "*"
+django-heroku = "*"
 
 [dev-packages]
 "flake8" = "*"
