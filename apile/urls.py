@@ -6,6 +6,7 @@ from posts.backends import HomeRegistrationView
 urlpatterns = [
     path('', views.index, name="home"),
     path('posts/<slug>', views.get_post, name="get_post"),
+    path('posts/<slug>/vote', views.make_vote, name="make_vote"),
     path('accounts/register/',
          HomeRegistrationView.as_view(),
          name="registration_register"),

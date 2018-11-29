@@ -18,7 +18,10 @@
  
 
 <body>
-
+    <script
+			  src="https://code.jquery.com/jquery-3.3.1.min.js"
+			  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+			  crossorigin="anonymous"></script>
     <header class="hero has-background-info is bold is medium">
         <nav class="navbar">
             <h1 class="title is-1 has-text-light">Apile</h1>
@@ -45,16 +48,26 @@
                         </div>
         </nav>
     </header>
-
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+        <li{% if message.tags%} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
     {% block content %}
     {% endblock content %}
 
-</body>
-
-<footer class="footer has-background-grey-dark">
+    <footer class="footer has-background-grey-dark">
     <div class="content has-text-centered has-text-white-ter">
         <p> - 2018 Fan Sam all rights reserved - </p>
     </div>
+
 </footer>
+    <script src={% static 'js/script.js' %}>        
+    </script>
+</body>
+
+
 
 </html>

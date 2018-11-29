@@ -12,7 +12,16 @@ class Post(Timestamp):
     link = models.URLField(null=True, blank=True)
     description = models.TextField()
     author = models.ForeignKey(User, on_delete=models.CASCADE)
-    slug = models.SlugField(max_length=255, unique=True)
+    slug = models.SlugField(unique=True, max_length=255)
+
+    def __str__(self):
+        return self.title
+
+    def get_total_count(self):
+        upvotes = Vote.objects.filter(vote=True, post=self).count()
+        downvotes = Vote.objects.filter(vote=False, post=self).count()
+        return upvotes - downvotes
+
 
 
 class Vote(models.Model):
@@ -22,3 +31,9 @@ class Vote(models.Model):
 
     class Meta:
         unique_together = ('voter', 'post')
+
+    def get_vote_count(self):
+        if self.vote is True:
+            return 1
+        else:
+            return -1

@@ -15,7 +15,6 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
 
-
         users = User.objects.all()
         for user in users:
             if not user.is_staff:
@@ -41,11 +40,26 @@ class Command(BaseCommand):
             )
 
             post.slug = slugify(post.title) + f'-{randint(1, 255)}'
-
             post.save()
             posts.append(post)
 
         for x in range(20):
-            Vote.objects.create(vote=True, voter=choice(users), post=posts[x])
-            
-                
+            Vote.objects.create(vote=choice((True, False)),
+                                voter=users[0],
+                                post=posts[x])
+
+            Vote.objects.create(vote=choice((True, False)),
+                                voter=users[1],
+                                post=posts[x])
+
+            Vote.objects.create(vote=choice((True, False)),
+                                voter=users[2],
+                                post=posts[x])
+
+            Vote.objects.create(vote=choice((True, False)),
+                                voter=users[3],
+                                post=posts[x])
+
+            Vote.objects.create(vote=choice((True, False)),
+                                voter=users[4],
+                                post=posts[x])
