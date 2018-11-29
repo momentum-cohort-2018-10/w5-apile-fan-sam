@@ -1,40 +1,35 @@
 {% extends 'base.html' %}
 {% block content %}
 
-{% load paginate %}
 
-
-{% paginate 5 posts %}
     {% for post in posts %}
         <div class="container">
 
             <div class="box post-box">
-            <div class="post-section">
-            <div class="voting">
-                <i class="fas fa-caret-up" name="{{ post.slug }}"></i>
-                <p name="{{ post.slug }}">{{ post.get_total_count }}</p>
-                <i class="fas fa-caret-down" name="{{ post.slug }}"></i>
-            </div>
-            <div class="post-content">
-                <span>
-                    <h2 class="post-title has-text-weight-bold is-size-5">
-                        <a href="{% url 'get_post' slug=post.slug %}">{{ post.title }}</a>
-                    </h2>
-                    <a href="{{ post.link }}" target="_blank" class="button is-info is-outlined is-small">Link to Article</a></span>
-                <p class="author has-text-grey">{{ post.author }}</p>
-                <p class="post-description">{{ post.description }}</p>
-                <div class="controls">
-                    <p class="post-info">
-                        <span class="has-text-grey">5 Comments</span>
-                    </p>
-
-                </div>
-            </div>      
-        </div>  
+                <div class="post-section">
+                    <div class="voting">
+                        <i class="fas fa-caret-up" name="{{ post.slug }}"></i>
+                        <p name="{{ post.slug }}">{{ post.get_total_count }}</p>
+                        <i class="fas fa-caret-down" name="{{ post.slug }}"></i>
+                    </div>
+                    <div class="post-content">
+                        <span>
+                            <h2 class="post-title has-text-weight-bold is-size-5">
+                                <a href="{% url 'get_post' slug=post.slug %}">{{ post.title }}</a>
+                            </h2>
+                            <a href="{{ post.link }}" target="_blank" class="button is-info is-outlined is-small">Link to Article</a></span>
+                        <p class="author has-text-grey">{{ post.author }}</p>
+                        <p class="post-description">{{ post.description }}</p>
+                        <div class="controls">
+                            <p class="post-info">
+                                <span class="has-text-grey">5 Comments</span>
+                            </p>
+                        </div>
+                    </div>      
+                </div>   
             </div>
         </div>
-
     {% endfor %}
-{% show_pageitems  %}
+
 
 {% endblock content %}
