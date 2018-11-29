@@ -12,11 +12,11 @@ class Post(Timestamp):
     link = models.URLField(null=True, blank=True)
     description = models.TextField()
     author = models.ForeignKey(User, on_delete=models.CASCADE)
-    slug = models.SlugField(unique=True)
+    slug = models.SlugField(max_length=255, unique=True)
 
 
 class Vote(models.Model):
-    vote = models.BooleanField(null=True)
+    vote = models.BooleanField(null=False)
     voter = models.ForeignKey(User, on_delete=models.CASCADE)
     post = models.ForeignKey(Post, on_delete=models.CASCADE)
 

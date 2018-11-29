@@ -11,7 +11,8 @@ mimesis = "*"
 "psycopg2" = "*"
 gunicorn = "*"
 django-heroku = "*"
-
+django-simple-pagination = "*"
+django-endless-pagination = "*"
 
 [dev-packages]
 "flake8" = "*"
