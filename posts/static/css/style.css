@@ -8,7 +8,7 @@ body {
     padding: 20px 30px;
     margin: 30px auto;
 }
-.container .post-box {
+.container .post-section {
     display: flex;
 }
 .voting {
@@ -33,4 +33,17 @@ body {
 }
 .post-content .post-description {
     margin-bottom: 1.75rem;
+}
+.comment-section { 
+    padding-left: 70px;
+}
+.comment-section .comment-content{
+    border-left: 3px solid green;
+    padding-left: 15px;
+    margin-bottom: 30px;
+}
+.post-page .post-section{
+    border-bottom: 1px solid lightgray;
+    margin-bottom: 25px;
+    padding-bottom: 10px
 }
