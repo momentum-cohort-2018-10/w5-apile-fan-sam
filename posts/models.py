@@ -23,6 +23,7 @@ class Post(Timestamp):
         return upvotes - downvotes
 
 
+
 class Vote(models.Model):
     vote = models.BooleanField(null=False)
     voter = models.ForeignKey(User, on_delete=models.CASCADE)

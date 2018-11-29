@@ -1,10 +1,14 @@
 {% extends 'base.html' %}
 {% block content %}
 
-{% for post in posts %}
-    <div class="container">
+{% load paginate %}
 
-        <div class="box post-box">
+
+{% paginate 5 posts %}
+    {% for post in posts %}
+        <div class="container">
+
+            <div class="box post-box">
             <div class="post-section">
             <div class="voting">
                 <i class="fas fa-caret-up" name="{{ post.slug }}"></i>
@@ -26,10 +30,11 @@
 
                 </div>
             </div>      
-        </div> 
+        </div>  
+            </div>
         </div>
-    </div>
 
-{% endfor %}
+    {% endfor %}
+{% show_pageitems  %}
 
 {% endblock content %}
