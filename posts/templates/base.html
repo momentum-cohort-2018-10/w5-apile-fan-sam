@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
  
-
+  
 <body>
     <script
 			  src="https://code.jquery.com/jquery-3.3.1.min.js"
@@ -55,6 +55,14 @@
         {% endfor %}
     </ul>
     {% endif %}
+    <div class="container button-controls">
+        <div class="button_container">
+            <a class="button is-solid" href="{% url 'make_post' %}">Make Post</a>
+            <a class="button is-solid" href= "{% url 'get_user_posts' %}">My Posts</a>
+        </div>
+    </div>
+    
+    
     {% block content %}
     {% endblock content %}
 

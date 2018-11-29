@@ -23,7 +23,6 @@ class Post(Timestamp):
         return upvotes - downvotes
 
 
-
 class Vote(models.Model):
     vote = models.BooleanField(null=False)
     voter = models.ForeignKey(User, on_delete=models.CASCADE)
@@ -31,9 +30,3 @@ class Vote(models.Model):
 
     class Meta:
         unique_together = ('voter', 'post')
-
-    def get_vote_count(self):
-        if self.vote is True:
-            return 1
-        else:
-            return -1

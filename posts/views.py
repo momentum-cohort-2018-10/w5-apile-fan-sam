@@ -1,9 +1,12 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from posts.models import Post, Vote
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
+from posts.forms import PostForm
+from django.utils.text import slugify
 import json
+
 
 def index(request):
     posts = Post.objects.all()
@@ -15,7 +18,32 @@ def index(request):
 def get_post(request, slug):
     post = Post.objects.get(slug=slug)
     return render(request, 'posts/post.html', {
-        'post': post
+        'post': post 
+    })
+
+
+def make_post(request):
+    form = PostForm()
+    if request.method == "POST":
+        form = PostForm(request.POST)
+        if form.is_valid():
+            post = Post(**form.cleaned_data)
+            post.slug = slugify(post.title)
+            post.save()
+
+            return redirect('home')
+
+    return render(request, 'posts/post_form.html', {
+        'form': form
+    })
+
+
+@login_required
+def get_user_posts(request):
+    user = request.user
+    posts = Post.objects.filter(author=user)
+    return render(request, 'posts/user_posts.html', {
+        'posts': posts
     })
 
 
