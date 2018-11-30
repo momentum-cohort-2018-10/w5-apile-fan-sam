@@ -17,9 +17,13 @@
                     <a href="{{ post.link }}" target="_blank" class="button is-info is-outlined is-small">Link to Article</a></span>
                 <p class="author has-text-grey">{{ post.author }}</p>
                 <p class="post-description">{{ post.description }}</p>
+                    
                 <div class="controls">
                     <p class="post-info">
-                        <span class="has-text-grey">5 Comments</span>
+                        {% if user == post.author or user.is_staff %}
+                            <a class="button" href="{% url 'delete_post' slug=post.slug %}"><i class="fas fa-trash-alt"></i> &nbsp; Delete</a>
+                        {% endif %}
+                        <span class="has-text-grey">{{ comments.count }} Comment{{ comments.count|pluralize }}</span>
                     </p>
 
                 </div>
@@ -40,7 +44,7 @@
                 <p class="author"><strong>{{ comment.commenter }}</strong></p>
                 <p class="has-text-grey">{{ comment.created }}</p>
                 <p class="post-description">{{ comment.text }}</p>
-
+                <a class="button" href="{% url 'delete_comment' id=comment.id %}"><i class="fas fa-trash-alt"></i> &nbsp; Delete</a>
             </div>
             {% endfor %}
         

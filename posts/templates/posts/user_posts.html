@@ -15,6 +15,9 @@
                             <a href="{{ post.link }}" target="_blank" class="button is-info is-outlined is-small">Link to Article</a></span>
                         <p class="author has-text-grey">{{ post.author }}</p>
                         <p class="post-description">{{ post.description }}</p>
+                            {% if user == post.author or user.is_staff %}
+                                <a class="button" href="{% url 'delete_post' slug=post.slug %}"><i class="fas fa-trash-alt"></i> &nbsp; Delete</a>
+                            {% endif %}
                         <div class="controls">
                             <p class="post-info">
                             </p>

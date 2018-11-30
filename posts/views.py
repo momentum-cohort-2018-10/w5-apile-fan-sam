@@ -5,6 +5,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from posts.forms import PostForm, CommentForm
 from django.utils.text import slugify
+from django.db.models import Count
 import json
 
 
@@ -37,6 +38,14 @@ def get_post(request, slug):
 
 
 @login_required
+def delete_post(request, slug):
+    post = Post.objects.get(slug=slug)
+    if (request.user == post.author) or (request.user.is_staff):
+        post.delete()
+    return redirect('home')
+
+
+@login_required
 def make_post(request):
     form = PostForm()
     if request.method == "POST":
@@ -63,6 +72,11 @@ def get_user_posts(request):
         'posts': posts
     })
 
+@login_required
+def delete_comment(request, id):
+    comment = Comment.objects.get(id=id)
+    comment.delete()
+    return redirect('home')
 
 
 def make_vote(request, slug):
