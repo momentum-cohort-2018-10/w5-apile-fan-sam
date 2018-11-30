@@ -11,5 +11,8 @@ mimesis = "*"
 "psycopg2" = "*"
 gunicorn = "*"
 django-heroku = "*"
+django-endless-pagination = "*"
+django-el-pagination = "*"
+
 [requires]
 python_version = "3.7"
