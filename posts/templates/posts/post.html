@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load crispy_forms_tags %}
 {% block content %}
 <div class="container post-page">
     <div class="box post-box">
@@ -26,16 +27,22 @@
         </div>
         <div class="comment-section">
             <div class="comment-content">
-                <p class="author has-text-grey">{{ post.author }}</p>
-                <p class="post-description">{{ post.description }}</p>
-
+                <form action="" method="POST" role="form">
+                    {% csrf_token %}
+                    {{ form|crispy }}
+                    <button type="submit" class="button is-primary">Submit</button>
+                
+                </form>
+                
             </div>
+            {% for comment in comments %}
             <div class="comment-content">
-                <p class="author has-text-grey">{{ post.author }}</p>
-                <p class="post-description">{{ post.description }}</p>
+                <p class="author"><strong>{{ comment.commenter }}</strong></p>
+                <p class="has-text-grey">{{ comment.created }}</p>
+                <p class="post-description">{{ comment.text }}</p>
 
             </div>
-        
+            {% endfor %}
         
         </div>
     </div>

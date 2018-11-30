@@ -6,6 +6,9 @@ class Timestamp(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
 
+    class Meta:
+        abstract = True
+
 
 class Post(Timestamp):
     title = models.CharField(max_length=255)
@@ -30,3 +33,9 @@ class Vote(models.Model):
 
     class Meta:
         unique_together = ('voter', 'post')
+
+
+class Comment(Timestamp):
+    post = models.ForeignKey(Post, on_delete=models.CASCADE)
+    commenter = models.ForeignKey(User, on_delete=models.CASCADE)
+    text = models.TextField(null=False, blank=False)

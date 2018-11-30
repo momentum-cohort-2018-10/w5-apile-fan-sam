@@ -1,9 +1,9 @@
 from django.shortcuts import render, redirect
-from posts.models import Post, Vote
+from posts.models import Post, Vote, Comment
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
-from posts.forms import PostForm
+from posts.forms import PostForm, CommentForm
 from django.utils.text import slugify
 import json
 
@@ -17,8 +17,22 @@ def index(request):
 
 def get_post(request, slug):
     post = Post.objects.get(slug=slug)
+
+    if request.method == "POST":
+        form = CommentForm(request.POST)
+        if form.is_valid():
+            comment = Comment(**form.cleaned_data)
+            comment.commenter = request.user
+            comment.post = post
+            comment.save()
+
+    comments = Comment.objects.filter(post=post)
+
+    form = CommentForm()
     return render(request, 'posts/post.html', {
-        'post': post 
+        'form': form,
+        'comments': comments,
+        'post': post
     })
 
 
@@ -38,6 +52,7 @@ def make_post(request):
     return render(request, 'posts/post_form.html', {
         'form': form
     })
+
 
 
 @login_required
