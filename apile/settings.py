@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'posts',
     'el_pagination',
     'registration',
+    'crispy_forms',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
