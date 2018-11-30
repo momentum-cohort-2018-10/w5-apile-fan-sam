@@ -22,12 +22,14 @@ def get_post(request, slug):
     })
 
 
+@login_required
 def make_post(request):
     form = PostForm()
     if request.method == "POST":
         form = PostForm(request.POST)
         if form.is_valid():
             post = Post(**form.cleaned_data)
+            post.author = request.user
             post.slug = slugify(post.title)
             post.save()
 

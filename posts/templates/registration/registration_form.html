@@ -1,4 +1,6 @@
 {% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
 {% block title %}
     Registration-Form {{ block.super }}
 {% endblock title %}
@@ -6,16 +8,14 @@
         <h1> Registration Form </h1>
         <form role="form" action='' method="post">
             {% csrf_token %}
-            {% for field in form %}
-            <div class="field">
-                <label class="label">{{ field.label_tag }}</label>
-                <div class="control">
-                    <p>{{ field }}</p>
-                </div>
-            </div>
-
-            {% endfor %}
+            {{ form|crispy }}
             <button type="submit" class="button is-primary">Submit</button>
         </form>
+
+        {% if form.errors is not None %}
+            {% for key, error in form.errors.items %}
+                <p>{{ error }}</p>
+            {% endfor %} 
+        {% endif %}
     
 {% endblock content %}
