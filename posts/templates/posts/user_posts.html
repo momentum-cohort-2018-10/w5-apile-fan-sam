@@ -1,11 +1,30 @@
 {% extends 'base.html' %}
 {% block content %}
+<h1 class="container subtitle">Posts for {{ user }}</h1>
     {% for post in posts %}
-       <h1> Title  {{post.title}} </h1>
-       <p> Post Author {{ post.author }} </p>
-       <p> {{post.description }} </p> 
+       <div class="container">  
+
+            <div class="box post-box">
+                <div class="post-section">
+                    </div>
+                    <div class="post-content">
+                        <span>
+                            <h2 class="post-title has-text-weight-bold is-size-5">
+                                <a >{{ post.title }}</a>
+                            </h2>
+                            <a href="{{ post.link }}" target="_blank" class="button is-info is-outlined is-small">Link to Article</a></span>
+                        <p class="author has-text-grey">{{ post.author }}</p>
+                        <p class="post-description">{{ post.description }}</p>
+                        <div class="controls">
+                            <p class="post-info">
+                            </p>
+                        </div>
+                    </div>      
+                </div><!--post-section-->
+            </div><!--post-box-->
+        </div><!--Container End-->
 
 
     {% endfor %}
-    <h1>Posts for User</h1>
+    
 {% endblock content %}

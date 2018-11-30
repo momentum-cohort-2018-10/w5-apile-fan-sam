@@ -1,7 +1,8 @@
 {% extends 'base.html' %}
 {% block content %}
-
+{% load el_pagination_tags %}
     
+    {% paginate posts %}
     {% for post in posts %}
         <div class="container">  
 
@@ -30,6 +31,7 @@
             </div><!--post-box-->
         </div><!--Container End-->
     {% endfor %}
-
-
+    <div class ="container">
+    {% show_pages %}
+    </div>
 {% endblock content %}

@@ -51,4 +51,4 @@ class Migration(migrations.Migration):
             name='vote',
             unique_together={('voter', 'post')},
         ),
-    ]
+    ] 
