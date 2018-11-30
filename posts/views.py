@@ -49,6 +49,7 @@ def get_user_posts(request):
     })
 
 
+
 def make_vote(request, slug):
     post = Post.objects.get(slug=slug)
     user = request.user

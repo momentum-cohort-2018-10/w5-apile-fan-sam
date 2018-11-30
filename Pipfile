@@ -12,6 +12,7 @@ mimesis = "*"
 gunicorn = "*"
 django-heroku = "*"
 django-crispy-forms = "*"
+django-el-pagination = "*"
 
 [requires]
 python_version = "3.7"
