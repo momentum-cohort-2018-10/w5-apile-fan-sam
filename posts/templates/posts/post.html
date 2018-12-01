@@ -30,6 +30,7 @@
             </div>      
         </div>
         <div class="comment-section">
+            {% if user.is_authenticated %}
             <div class="comment-content">
                 <form action="" method="POST" role="form">
                     {% csrf_token %}
@@ -39,6 +40,9 @@
                 </form>
                 
             </div>
+            
+            {% endif %}
+            
             {% for comment in comments %}
             <div class="comment-content">
                 <p class="author"><strong>{{ comment.commenter }}</strong></p>
