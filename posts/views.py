@@ -63,7 +63,6 @@ def make_post(request):
     })
 
 
-
 @login_required
 def get_user_posts(request):
     user = request.user
@@ -72,11 +71,13 @@ def get_user_posts(request):
         'posts': posts
     })
 
+
 @login_required
 def delete_comment(request, id):
     comment = Comment.objects.get(id=id)
+    post = comment.post
     comment.delete()
-    return redirect('home')
+    return redirect('get_post', slug=post.slug)
 
 
 def make_vote(request, slug):
