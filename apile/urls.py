@@ -1,7 +1,8 @@
 from django.contrib import admin
 from django.urls import path, include
 from posts import views
-from posts.backends import HomeRegistrationView
+from posts.backends import HomeRegistrationView, CustomLoginView
+from django.contrib.auth.views import LogoutView
 
 urlpatterns = [
     path('', views.index, name="home"),
@@ -14,6 +15,11 @@ urlpatterns = [
     path('accounts/register/',
          HomeRegistrationView.as_view(),
          name="registration_register"),
+
     path('accounts/', include('registration.backends.default.urls')),
+    path('accounts/login',
+         CustomLoginView.as_view(template_name='registration/login.html'),
+         name='auth_login'),
+
     path('admin/', admin.site.urls),
 ]

@@ -19,8 +19,8 @@
                                 <a href="{% url 'get_post' slug=post.slug %}">{{ post.title }}</a>
                             </h2>
                             <a href="{{ post.link }}" target="_blank" class="button is-info is-outlined is-small">Link to Article</a></span>
-                        <p class="author has-text-grey">{{ post.created }}</p>
-                        <p class="author has-text-grey">{{ post.author }}</p>
+                        <p class="author has-text-grey">{{ post.author }} - {{ post.created }}</p>
+                        
                         <p class="post-description">{{ post.description }}</p>
                         <div class="controls">
                             <p class="post-info">
@@ -28,7 +28,7 @@
                                     <a class="button" href="{% url 'delete_post' slug=post.slug %}"><i class="fas fa-trash-alt"></i> &nbsp; Delete</a>
                                 {% endif %}
                                 
-                                <a href="{% url 'get_post' slug=post.slug %}" class="button">{{ post.comment_set.count }} Comment{{ post.comment_set.count|pluralize }}</a>
+                                <a href="{% url 'get_post' slug=post.slug %}" class="button">{{ post.num_comments }} Comment{{ post.num_comments|pluralize }}</a>
                             </p>
                         </div>
                     </div>      
