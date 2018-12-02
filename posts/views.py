@@ -10,7 +10,7 @@ import json
 
 
 def index(request):
-    posts = Post.objects.all()
+    posts = Post.objects.annotate(num_comments=Count('comment'))
     return render(request, 'index.html', {
         'posts': posts
     })
@@ -52,6 +52,9 @@ def get_post(request, slug):
             comment.commenter = request.user
             comment.post = post
             comment.save()
+            messages.add_message(request,
+                                 messages.INFO,
+                                 'Your comment was published.')
 
     comments = Comment.objects.filter(post=post)
 
@@ -81,7 +84,9 @@ def make_post(request):
             post.author = request.user
             post.slug = slugify(post.title)
             post.save()
-
+            messages.add_message(request,
+                                 messages.INFO,
+                                 'Your post was published.')
             return redirect('home')
 
     return render(request, 'posts/post_form.html', {
@@ -97,11 +102,16 @@ def get_user_posts(request):
         'posts': posts
     })
 
+
 @login_required
 def delete_comment(request, id):
     comment = Comment.objects.get(id=id)
+    post = comment.post
     comment.delete()
-    return redirect('home')
+    messages.add_message(request,
+                         messages.INFO,
+                         'Your comment was deleted.')
+    return redirect('get_post', slug=post.slug)
 
 
 def make_vote(request, slug):
@@ -142,7 +152,9 @@ def make_vote(request, slug):
                     vote.save()
 
         else:
-            return HttpResponse(json.dumps(["fail", "You must be signed in to vote on posts."]))
+            return HttpResponse(
+                json.dumps(["fail",
+                            "You must be signed in to vote on posts."]))
 
         votes = post.get_total_count()
         return HttpResponse(json.dumps(["success", votes]))
