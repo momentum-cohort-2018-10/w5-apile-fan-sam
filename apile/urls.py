@@ -17,6 +17,6 @@ urlpatterns = [
     path('accounts/', include('registration.backends.default.urls')),
     path('sort', views.sort_by_date, name="sort_by_date"),
     path('sort-reverse', views.sort_by_reverse, name="sort_by_reverse"),
-    path('sort-by-likes', views.sort_by_likes, name="sort_by_likes"),
+    path('sort-by-likes/', views.sort_by_likes, name="sort_by_likes"),
     path('admin/', admin.site.urls),
 ]

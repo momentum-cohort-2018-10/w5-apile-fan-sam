@@ -15,22 +15,24 @@ def index(request):
         'posts': posts
     })
 
+
 def sort_by_likes(request):
     """Sorts by number of likes from most to least"""
-    posts = sorted(Post.objects.all(), key=lambda post: post.get_total_count)
-    # likes = Post.get_total_count()
-    # posts = Post.objects.all().order_by('likes')
-    #posts = Post.objects.annotate(like_count=Count("votes")).order_by('like_count')
+    posts = sorted(Post.objects.all(),
+                   key=lambda post: post.get_total_count(),
+                   reverse=True)
     return render(request, 'index.html', {
         'posts': posts
     })
-    
+
+
 def sort_by_date(request):
     """Sorts the date with most recent posted first"""
     posts = Post.objects.all().order_by('-created')
     return render(request, 'index.html', {
         'posts': posts
     })
+
 
 def sort_by_reverse(request):
     """Sorts the date with oldest posts firsts"""
@@ -85,7 +87,6 @@ def make_post(request):
     return render(request, 'posts/post_form.html', {
         'form': form
     })
-
 
 
 @login_required
