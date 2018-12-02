@@ -1,7 +1,9 @@
 {% extends 'base.html' %}
 {% block content %}
 {% load el_pagination_tags %}
-    
+        <a class="button" href="{% url 'sort_by_date' %}"> Newest Posts</a>
+        <a class="button" href="{% url 'sort_by_reverse' %}"> Oldest Posts</a>
+        <a class="button" href="{% url 'sort_by_likes' %}"> Sort By Popularity</a>
     {% paginate posts %}
     {% for post in posts %}
         <div class="container">  

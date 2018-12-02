@@ -16,6 +16,7 @@ class Post(Timestamp):
     description = models.TextField()
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     slug = models.SlugField(unique=True, max_length=255)
+    votes = models.IntegerField(null=True)
 
     def __str__(self):
         return self.title
