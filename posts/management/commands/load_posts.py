@@ -30,7 +30,7 @@ class Command(BaseCommand):
             users.append(user)
 
         posts = []
-        for _ in range(20):
+        for _ in range(40):
 
             post = Post(
                 title=text.title(),
@@ -44,7 +44,7 @@ class Command(BaseCommand):
             posts.append(post)
 
         for x in range(20):
-            Vote.objects.create(vote=choice((True, False)),
+            Vote.objects.create(vote=True,
                                 voter=users[0],
                                 post=posts[x])
 
@@ -52,7 +52,7 @@ class Command(BaseCommand):
                                 voter=users[1],
                                 post=posts[x])
 
-            Vote.objects.create(vote=choice((True, False)),
+            Vote.objects.create(vote=True,
                                 voter=users[2],
                                 post=posts[x])
 
